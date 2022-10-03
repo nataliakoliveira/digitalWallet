@@ -1,8 +1,15 @@
 .header {
+  align-items: center;
   background: white;
   border-radius: 10px;
   box-shadow: -4px 9px 13px rgba(7, 233, 26, 0.3);
   color: darkgreen;
   display: flex;
+  height: 100px;
   justify-content: space-around;
+  width: 100%;
+}
+
+.h1 {
+  font-size: 40px;
 }

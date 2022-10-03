@@ -8,10 +8,14 @@ class Header extends Component {
     const { user } = this.props;
     return (
       <div className="header">
-        <div>💸 Trybe Wallet</div>
-        <div data-testid="total-field">Total de despesas: 0</div>
+        <div className="h1">💸 Trybe Wallet</div>
+        <div data-testid="total-field">🪙 Total de despesas: 0</div>
         <div data-testid="header-currency-field">BRL</div>
-        <div data-testid="email-field">{user.email}</div>
+        <div data-testid="email-field">
+          ✉️
+          {' '}
+          {user.email}
+        </div>
       </div>
     );
   }

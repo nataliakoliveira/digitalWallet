@@ -1,0 +1,72 @@
+.header2 {
+  align-items: center;
+  background: rgba(225, 229, 235, 0.49);
+  border-radius: 10px;
+  box-shadow: -4px 9px 13px rgba(7, 233, 26, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 2px;
+  height: 134px;
+  justify-content: space-around;
+  margin-left: 15%;
+  width: 1037px;
+}
+
+.inputDescricao {
+  align-items: center;
+  display: flex;
+  flex: 1 40%;
+  justify-content: flex-start;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.inputDes {
+  border: 2px solid darkgreen;
+  border-radius: 5px;
+  height: 25px;
+  margin-left: 1%;
+  width: 258.86px;
+}
+
+.selectCategoria {
+  align-items: center;
+  display: flex;
+  flex: 1 40%;
+  margin-top: 2%;
+}
+
+.selectCateg {
+  height: 30px;
+  margin-left: 1%;
+  width: 155px;
+}
+
+.inputDespesa {
+  align-items: center;
+}
+
+.inputDesp {
+  border: 2px solid darkgreen;
+  border-radius: 5px;
+  height: 25px;
+  width: 188.86px;
+}
+
+.selectMetodo {
+  align-items: center;
+}
+
+.selectMet {
+  height: 30px;
+  width: 155px;
+}
+
+.selectMoeda {
+  align-items: center;
+}
+
+.selectMoed {
+  height: 30px;
+  width: 155px;
+}
