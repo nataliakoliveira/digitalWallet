@@ -1,7 +1,7 @@
 .header {
   align-items: center;
   background: white;
-  border-radius: 10px;
+  border-radius: 9px;
   box-shadow: -4px 9px 13px rgba(7, 233, 26, 0.3);
   color: darkgreen;
   display: flex;
