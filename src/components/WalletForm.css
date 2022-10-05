@@ -1,13 +1,13 @@
 .header2 {
-  align-items: center;
+  align-items: stretch;
   background: rgba(225, 229, 235, 0.49);
   border-radius: 10px;
   box-shadow: -4px 9px 13px rgba(7, 233, 26, 0.3);
   display: flex;
   flex-wrap: wrap;
   gap: 7px 2px;
-  height: 134px;
-  justify-content: space-around;
+  height: 184px;
+  justify-content: space-between;
   margin-left: 15%;
   width: 1037px;
 }
@@ -44,6 +44,8 @@
 
 .inputDespesa {
   align-items: center;
+  margin-left: 4%;
+  margin-top: 2%;
 }
 
 .inputDesp {
@@ -55,6 +57,7 @@
 
 .selectMetodo {
   align-items: center;
+  margin-top: 2%;
 }
 
 .selectMet {
@@ -64,9 +67,37 @@
 
 .selectMoeda {
   align-items: center;
+  margin-top: 2%;
 }
 
 .selectMoed {
   height: 30px;
   width: 155px;
+}
+
+.submitBtn {
+  background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+  background-color: rgba(68, 199, 103);
+  border: 1px solid #18ab29;
+  border-radius: 9px;
+  box-shadow: inset 0 1px 0 0 #3dc21b;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  height: 30px;
+  margin-left: 110%;
+  margin-top: 1%;
+  text-shadow: 0 1px 0 #2f6627;
+  width: 300px;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+  background-color: rgba(92, 191, 42);
+}
+
+.submitBtn:active {
+  position: relative;
+  top: 1px;
 }

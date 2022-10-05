@@ -2,13 +2,30 @@ import React, { Component } from 'react';
 import './WalletForm.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { TYPE_GET_CURRENCIES } from '../redux/actions';
+import { TYPE_GET_CURRENCIES, saveInfosThunk } from '../redux/actions';
+
+/* expenses: [{
+  "id": 0,
+  "value": "3",
+  "description": "Hot Dog",
+  "currency": "USD",
+  "method": "Dinheiro",
+  "tag": "Alimentação",
+  "exchangeRates": {
+    "USD": {
+      "code": "USD",
+      "name": "Dólar Comercial",
+      "ask": "5.6208",
+      ...
+ */
 
 class WalletForm extends Component {
   state = {
-    moedaInicial: 'USD',
-    metodoPagamento: 'Dinheiro',
-    despesaInicial: 'Alimentação',
+    moeda: 'USD',
+    metodo: 'Dinheiro',
+    categoria: 'Alimentação',
+    description: '',
+    valor: '',
   };
 
   async componentDidMount() {
@@ -18,14 +35,34 @@ class WalletForm extends Component {
       .then((data) => data);
     console.log(currAPI);
     const filterCurr = Object.keys(currAPI).filter((curr) => curr !== 'USDT');
-    console.log(filterCurr);
     dispatch({ type: TYPE_GET_CURRENCIES, payload: filterCurr });
   }
 
+  handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+
+  getInfos = () => {
+    const { valor, description, moeda, metodo, categoria } = this.state;
+    const { dispatch } = this.props;
+    const expenses = {
+      value: valor,
+      description,
+      currency: moeda,
+      method: metodo,
+      tag: categoria,
+    };
+    dispatch(saveInfosThunk(expenses));
+    this.setState({
+      description: '',
+      valor: '',
+    });
+  };
+
   render() {
     const { wallet } = this.props;
-    console.log(wallet);
-    const { metodoPagamento, moedaInicial, despesaInicial } = this.state;
+    const { metodo, moeda, categoria, description, valor } = this.state;
     return (
       <form className="header2">
         <label htmlFor="description-input" className="inputDescricao">
@@ -33,8 +70,10 @@ class WalletForm extends Component {
           <input
             data-testid="description-input"
             type="text"
+            name="description"
+            value={ description }
             className="inputDes"
-            onChange={ () => console.log('clicou') }
+            onChange={ this.handleChange }
           />
         </label>
 
@@ -43,8 +82,9 @@ class WalletForm extends Component {
           <select
             data-testid="tag-input"
             className="selectCateg"
-            value={ despesaInicial }
-            onChange={ () => console.log('clicou') }
+            name="categoria"
+            value={ categoria }
+            onChange={ this.handleChange }
           >
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
@@ -60,8 +100,10 @@ class WalletForm extends Component {
           <input
             data-testid="value-input"
             type="number"
+            name="valor"
+            value={ valor }
             className="inputDesp"
-            onChange={ () => console.log('clicou') }
+            onChange={ this.handleChange }
           />
         </label>
 
@@ -71,8 +113,9 @@ class WalletForm extends Component {
           <select
             data-testid="method-input"
             className="selectMet"
-            value={ metodoPagamento }
-            onChange={ () => console.log('clicou') }
+            name="metodo"
+            value={ metodo }
+            onChange={ this.handleChange }
           >
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
@@ -86,13 +129,15 @@ class WalletForm extends Component {
           <select
             data-testid="currency-input"
             className="selectMoed"
-            onChange={ () => console.log('clicou') }
+            name="moeda"
+            value={ moeda }
+            onChange={ this.handleChange }
           >
             {wallet.currencies.map((currencie, index) => {
-              if (currencie === moedaInicial) {
+              if (currencie === moeda) {
                 return (
                   <option
-                    value="valor1"
+                    value={ currencie }
                     defaultValue={ currencie }
                     key={ index }
                   >
@@ -100,11 +145,20 @@ class WalletForm extends Component {
                   </option>
                 );
               }
-              return (<option value="valor1" key={ index }>{currencie}</option>);
+              return (<option value={ currencie } key={ index }>{currencie}</option>);
             })}
           </select>
         </label>
-        <div />
+        <div>
+          <button
+            type="button"
+            className="submitBtn"
+            onClick={ this.getInfos }
+          >
+            Adicionar despesa
+
+          </button>
+        </div>
       </form>
     );
   }

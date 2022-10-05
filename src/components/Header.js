@@ -5,12 +5,16 @@ import './Header.css';
 
 class Header extends Component {
   render() {
-    const { user } = this.props;
+    const { user, wallet } = this.props;
     return (
       <div className="header">
         <div className="h1">💸 Trybe Wallet</div>
-        <div data-testid="total-field">🪙 Total de despesas: 0</div>
-        <div data-testid="header-currency-field">BRL</div>
+        <div>
+          <span data-testid="total-field">
+            {wallet.total}
+          </span>
+          <span data-testid="header-currency-field">BRL</span>
+        </div>
         <div data-testid="email-field">
           ✉️
           {' '}
@@ -26,6 +30,9 @@ const mapStateToProps = (state) => ({ ...state });
 Header.propTypes = {
   user: PropTypes.shape({
     email: PropTypes.string,
+  }).isRequired,
+  wallet: PropTypes.shape({
+    total: PropTypes.number,
   }).isRequired,
 };
 
