@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 const userLogin = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case TYPE_LOGIN:
-    console.log('entrou');
     return {
       ...state,
       email: action.email,

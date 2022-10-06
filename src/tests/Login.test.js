@@ -43,6 +43,6 @@ describe('Verificar página de Login', () => {
   it('testar se é desabilitado', () => {
     renderWithRouterAndRedux(<App />);
     const button = screen.getByRole('button', { name: /entrar/i });
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
   });
 });

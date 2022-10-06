@@ -33,7 +33,6 @@ class WalletForm extends Component {
     const currAPI = await fetch('https://economia.awesomeapi.com.br/json/all')
       .then((response) => response.json())
       .then((data) => data);
-    console.log(currAPI);
     const filterCurr = Object.keys(currAPI).filter((curr) => curr !== 'USDT');
     dispatch({ type: TYPE_GET_CURRENCIES, payload: filterCurr });
   }
@@ -68,6 +67,7 @@ class WalletForm extends Component {
         <label htmlFor="description-input" className="inputDescricao">
           Descrição da despesa:
           <input
+            id="description-input"
             data-testid="description-input"
             type="text"
             name="description"
@@ -80,6 +80,7 @@ class WalletForm extends Component {
         <label htmlFor="tag-input" className="selectCategoria">
           Categoria da despesa
           <select
+            id="tag-input"
             data-testid="tag-input"
             className="selectCateg"
             name="categoria"
@@ -98,6 +99,7 @@ class WalletForm extends Component {
           Valor da despesa:
           {' '}
           <input
+            id="value-input"
             data-testid="value-input"
             type="number"
             name="valor"
@@ -111,6 +113,7 @@ class WalletForm extends Component {
           Método de pagamento
           {' '}
           <select
+            id="method-input"
             data-testid="method-input"
             className="selectMet"
             name="metodo"
@@ -127,6 +130,7 @@ class WalletForm extends Component {
           Moeda
           {' '}
           <select
+            id="currency-input"
             data-testid="currency-input"
             className="selectMoed"
             name="moeda"

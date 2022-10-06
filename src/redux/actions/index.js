@@ -5,6 +5,7 @@ export const SAVE_INFOS = 'SAVE_INFOS';
 export default TYPE_LOGIN;
 export const TYPE_EXPENSE_ADD = 'TYPE_EXPENSE_ADD';
 export const ACTION_UPDATE_TOTAL = 'ACTION_UPDATE_TOTAL';
+export const TYPE_DELETE_EXPENSES = 'TYPE_DELETE_EXPENSES';
 
 export const actionExpenseADD = (expense) => ({
   type: TYPE_EXPENSE_ADD,
@@ -14,6 +15,11 @@ export const actionExpenseADD = (expense) => ({
 export const actionUpdateTotal = (total) => ({
   type: ACTION_UPDATE_TOTAL,
   payload: total,
+});
+
+export const deleteExpenses = (newExpense, valueRm) => ({
+  type: TYPE_DELETE_EXPENSES,
+  payload: { newExpense, valueRm },
 });
 
 export const saveInfosThunk = (expense) => async (dispatch, getState) => {
