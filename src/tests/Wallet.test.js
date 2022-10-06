@@ -1,9 +1,10 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
+import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import Wallet from '../pages/Wallet';
-import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
+import WalletForm from '../components/WalletForm';
+import App from '../App';
 
 describe('testar informações do componente Wallet', () => {
   it('Testar se existem os componentes no Header', () => {
@@ -17,8 +18,6 @@ describe('testar informações do componente Wallet', () => {
     renderWithRouterAndRedux(<Wallet />);
     const valorInput = screen.getByTestId('value-input');
     expect(valorInput).toBeInTheDocument();
-    const descriptionInput = screen.getByTestId('description-input');
-    expect(descriptionInput).toBeInTheDocument();
     const tag = screen.getByRole('combobox', {
       name: /categoria da despesa/i,
     });
@@ -47,29 +46,40 @@ describe('testar informações do componente Wallet', () => {
     userEvent.type(valorInput, 1);
     userEvent.click(btn);
   });
-  it('testar o header da tabela', () => {
+});
+describe('Testa efetivamente a carteira', () => {
+  it('Verifica se existem os campos necessários', () => {
+    renderWithRouterAndRedux(<WalletForm />);
+    const valueInput = screen.getByTestId('value-input');
+    const descriptionInput = screen.getByTestId('description-input');
+    const currencyInput = screen.getByTestId('currency-input');
+    const methodInput = screen.getByTestId('method-input');
+    const tagInput = screen.getByTestId('tag-input');
+    expect(valueInput).toBeInTheDocument();
+    expect(valueInput).toHaveTextContent('');
+    expect(descriptionInput).toBeInTheDocument();
+    expect(descriptionInput).toHaveTextContent('');
+    expect(currencyInput).toBeInTheDocument();
+    expect(methodInput).toBeInTheDocument();
+    expect(tagInput).toBeInTheDocument();
+  });
+  it('testar se esta adicionando despesa', async () => {
     renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
-    const tableElement = screen.getByRole('table');
-    expect(tableElement).toBeInTheDocument();
-    const description = screen.getByTestId('table-description');
-    const value = screen.getByTestId('table-value');
-    const edition = screen.getByTestId('table-edition');
-    expect(description).toBeInTheDocument();
-    expect(edition).toBeInTheDocument();
-    expect(value).toBeInTheDocument();
-    /* const tabelaTitulos = [
-      'Descrição',
-      'Tag',
-      'Método de pagamento',
-      'Valor',
-      'Moeda',
-      'Câmbio utilizado',
-      'Valor convertido',
-      'Moeda de conversão',
-      'Editar/Excluir',
-    ];
-    tabelaTitulos.forEach((titulo) => {
-      expect(screen.getByText(titulo)).toBeInTheDocument();
-    }); */
+    const btnAdd = screen.getByRole('button', {
+      name: /adicionar despesa/i,
+    });
+    userEvent.click(btnAdd);
+    await waitForElementToBeRemoved(() => screen.getByText('Carregando'));
+    const tag = screen.getByRole('cell', {
+      name: /alimentação/i,
+    });
+    expect(tag).toBeInTheDocument();
+    const btnDeletar = screen.getByTestId('delete-btn');
+    userEvent.click(btnDeletar);
+    await waitForElementToBeRemoved(() => screen.getByTestId('loading'));
+    const tag2 = screen.getByRole('cell', {
+      name: /alimentação/i,
+    });
+    expect(tag2).not.toBeInTheDocument();
   });
 });

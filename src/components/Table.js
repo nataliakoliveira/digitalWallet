@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteExpenses } from '../redux/actions';
+import './Table.css';
+import Loading from './Loading';
 
 class Table extends Component {
   handleRemove = (id) => {
@@ -14,9 +16,10 @@ class Table extends Component {
   };
 
   render() {
-    const { expenses } = this.props;
+    const { expenses, loading } = this.props;
     return (
-      <table>
+      <table className="purpleHorizon">
+        {loading && <Loading />}
         <caption>Tabela</caption>
         <thead>
           <tr>
@@ -67,10 +70,12 @@ class Table extends Component {
 Table.propTypes = {
   expenses: PropTypes.arrayOf(Object).isRequired,
   deletarExpenses: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
+  loading: state.user.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

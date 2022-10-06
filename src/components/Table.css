@@ -1,0 +1,70 @@
+/* .purpleHorizon {
+  background-color: #555555;
+  border: 4px solid #149608;
+  border-collapse: collapse;
+  text-align: center;
+  width: 350px;
+}
+
+.purpleHorizon td, table.purpleHorizon th {
+  border: 1px solid #555555;
+  padding: 5px 2px;
+}
+
+.purpleHorizon tbody td {
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.purpleHorizon tr:nth-child(even) {
+  background: #CBFCC3;
+}
+
+.purpleHorizon td:nth-child(even) {
+  background: #B4FCA6;
+}
+
+.purpleHorizon thead {
+  background: #539650;
+  border-bottom: 4px solid #969696;
+}
+
+.purpleHorizon thead th {
+  border-left: 2px solid #88967F;
+  color: #FFFFFF;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.purpleHorizon thead th:first-child {
+  border-left: none;
+}
+
+.purpleHorizon tfoot {
+  color: #000000;
+  background: linear-gradient(to bottom, #d3ffd9 0%, #caffd2 66%, #C4FFCD 100%);
+  background: #C4FFCD;
+  background: -moz-linear-gradient(top, #d3ffd9 0%, #caffd2 66%, #C4FFCD 100%);
+  background: -webkit-linear-gradient(top, #d3ffd9 0%, #caffd2 66%, #C4FFCD 100%);
+  border-top: 5px solid #279618;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.purpleHorizon tfoot td {
+  font-size: 13px;
+}
+
+.purpleHorizon tfoot .links {
+  text-align: right;
+}
+
+.purpleHorizon tfoot .links a{
+  background: #709670;
+  border-radius: 5px;
+  color: #FFFFFF;
+  display: inline-block;
+  padding: 2px 8px;
+} */

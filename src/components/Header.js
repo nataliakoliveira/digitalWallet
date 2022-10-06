@@ -32,7 +32,7 @@ Header.propTypes = {
     email: PropTypes.string,
   }).isRequired,
   wallet: PropTypes.shape({
-    total: PropTypes.number,
+    total: PropTypes.string,
   }).isRequired,
 };
 
