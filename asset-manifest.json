@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/digitalWallet/static/css/main.818dfd94.css",
+    "main.js": "/digitalWallet/static/js/main.34a6aec7.js",
+    "static/media/wallet.jpg": "/digitalWallet/static/media/wallet.8e23ca073eea1cb96260.jpg",
+    "index.html": "/digitalWallet/index.html",
+    "main.818dfd94.css.map": "/digitalWallet/static/css/main.818dfd94.css.map",
+    "main.34a6aec7.js.map": "/digitalWallet/static/js/main.34a6aec7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.818dfd94.css",
+    "static/js/main.34a6aec7.js"
+  ]
+}
