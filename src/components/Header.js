@@ -11,6 +11,7 @@ class Header extends Component {
         <div className="h1">💸 Trybe Wallet</div>
         <div>
           <span data-testid="total-field">
+            🪙
             {wallet.total}
           </span>
           <span data-testid="header-currency-field">BRL</span>

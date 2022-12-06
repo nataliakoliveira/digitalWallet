@@ -20,7 +20,7 @@ class Table extends Component {
     return (
       <table className="purpleHorizon">
         {loading && <Loading />}
-        <caption>Tabela</caption>
+        <caption className="title">Despesas</caption>
         <thead>
           <tr>
             <th data-testid="table-description">Descrição</th>
